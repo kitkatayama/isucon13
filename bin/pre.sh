@@ -1,7 +1,8 @@
 #!/bin/bash
 set -ex
 
-LANG_SERVICE=web-service
+## git
+git -C /home/isucon/webapp/ pull
 
 ## stop services
 
@@ -11,7 +12,8 @@ sudo systemctl stop isupipe-go.service
 sleep 2
 
 ## language specific build code here
-
+sudo mv /var/lib/mysql /var/lib/mysql-`date "+%s"`
+sudo cp -pr /var/lib/mysql.orig /var/lib/mysql
 
 # cd app/golang && make build
 cd /home/isucon/webapp/go
